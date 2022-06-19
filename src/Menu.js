@@ -6,7 +6,7 @@ const Menu = ({ menuItems, category }) => {
     <article className='container food-section'>
       {menuItems
         .filter(item => {
-          if (category === '') {
+          if (category === 'all') {
             return true
           }
 

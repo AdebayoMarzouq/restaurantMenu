@@ -1,20 +1,25 @@
-import React from 'react';
+import React from 'react'
 
-export const Button = ({name, action}) => {
-  return <button className="filter-btn" onClick={() => action()}>{name}</button>
+export const Button = ({ name, action }) => {
+  return (
+    <button className='filter-btn' onClick={() => action()}>
+      {name}
+    </button>
+  )
 }
 
-const Categories = ({ setCategory }) => {
-  const action = (category) => {
+const Categories = ({ setCategory, categories }) => {
+  const filterCategory = (category) => {
     setCategory(category)
   }
 
-  return <div className='btn-container'>
-    <Button name='all' action={() => action('')}/>
-    <Button name='breakfast' action={() => action('breakfast')}/>
-    <Button name='lunch' action={() => action('lunch')}/>
-    <Button name='shakes' action={() => action('shakes')}/>
-  </div>;
-};
+  return (
+    <div className='btn-container'>
+      {categories.map((category,index) => (
+        <Button key={index} name={category} action={() => filterCategory(category)} />
+      ))}
+    </div>
+  )
+}
 
-export default Categories;
+export default Categories
